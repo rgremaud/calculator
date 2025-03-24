@@ -10,5 +10,21 @@ body {
     margin-top: 150px;
     height: 500px;
     width: 400px;
-    background-color: darkgray;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
+
+#displayScreen {
+   display:flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+   background-color: blueviolet;
+   height: 100px;
+   width: 380px;
+   margin-top: 10px;
+   border-radius: 10px;
+   font-size: 75px;
+}
+

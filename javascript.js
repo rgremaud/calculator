@@ -18,23 +18,23 @@ function divide(a,b) {
 }
 
 function clearTotal() {
-    sum = 0;
+    sum === 0;
 }
 
 function operate(a,b,mathFunction) {
-    if (mathFunction = "add") {
+    if (mathFunction === "add") {
         add(a,b);
         console.log("Addition is " + sum);
-    } else if (mathFunction = "subtract") {
+    } else if (mathFunction === "subtract") {
         subtract(a,b);
         console.log("Subtraction is "+ sum);
-    } else if (mathFunction = "multiply") {
+    } else if (mathFunction === "multiply") {
         multiply(a,b);
         console.log("Mutliplication is " + sum);
-    } else if (mathFunction = "divide") {
+    } else if (mathFunction === "divide") {
         divide(a,b);
         console.log("Division is " + sum);
-    } else if (mathFunction = "clearTotal") {
+    } else if (mathFunction === "clearTotal") {
         clearTotal()
     } else {
         console.log("Invalid Input - Try again dummy.");
@@ -49,3 +49,5 @@ function operate(a,b,mathFunction) {
 // 3 - 4, 5, 6, subtraction
 // 2 - 1, 2, 3, addition
 // 1 - +/-, 0, . (decimal), equals
+
+
