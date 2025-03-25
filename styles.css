@@ -1,23 +1,24 @@
 body {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 #calculator {
-    margin-top: 150px;
     height: 500px;
     width: 400px;
     background-color: black;
     border-radius: 10px;
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #displayScreen {
-   display:flex;
+   display: flex;
    justify-content: flex-end;
    align-items: flex-end;
    background-color: blueviolet;
@@ -28,3 +29,11 @@ body {
    font-size: 75px;
 }
 
+.buttons {
+    background-color: turquoise;
+    height: 87.5px;
+    width: 87.5px;
+    margin: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
