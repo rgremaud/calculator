@@ -1,4 +1,7 @@
 let sum = 0;
+let a = 0;
+let arrayA = [];
+let arrayB = [];
 
 function add(a,b) {
 sum = a+b;
@@ -48,18 +51,17 @@ clear.addEventListener("click", () => {
     alert("ouch!");
 });
 
-// add click event listener for each number that returns the actual number in console
-//const seven = document.querySelector("#seven")
-//seven.addEventListener("click", function(event) {
-   // const value = event.target.dataset.value;
-    //console.log("You clicked the number " + value);
-//});
+
+
 
 const numbers = document.querySelectorAll(".numbers");
 
 numbers.forEach((button) => {
     button.addEventListener("click",function(event) {
         const value = event.target.dataset.value;
+        a =+ value;
         console.log("You clicked the number " + value);
     });
 });
+
+//need to update so clicking a button updates a to concat the numbers
