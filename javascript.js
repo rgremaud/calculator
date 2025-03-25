@@ -59,9 +59,15 @@ const numbers = document.querySelectorAll(".numbers");
 numbers.forEach((button) => {
     button.addEventListener("click",function(event) {
         const value = event.target.dataset.value;
-        a =+ value;
-        console.log("You clicked the number " + value);
+        arrayA.push(value);
+        
+        console.log("Array is " + arrayA);
     });
 });
 
 //need to update so clicking a button updates a to concat the numbers
+// do this as an array?  
+// arrayA = []
+// arrayA.push(value) adds the value to the end of the array
+// a = arrayA.join(''); to convert to string
+// let num = Number(str); to convert to a number
