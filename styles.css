@@ -39,8 +39,8 @@ body {
 }
 
 .buttons {
-    background-color: turquoise;
     display: flex;
+    background-color: turquoise;
     justify-content: center;
     align-items: center;
     height: 87.5px;
@@ -50,4 +50,16 @@ body {
     font-size: 40px;
     color: white;
     
+}
+
+.numbers {
+    background-color: turquoise;
+}
+
+.operators {
+    background-color: orange;
+}
+
+.modifiers {
+    background-color: darkgray;
 }
