@@ -4,10 +4,11 @@ body {
     box-sizing: border-box;
     justify-content: center;
     margin-top: 100px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #calculator {
-    height: 500px;
+    height: 600px;
     width: 400px;
     background-color: black;
     border-radius: 10px;
@@ -29,11 +30,24 @@ body {
    font-size: 75px;
 }
 
-.buttons {
-    background-color: turquoise;
-    height: 87.5px;
-    width: 87.5px;
-    margin: 10px;
+#items {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.buttons {
+    background-color: turquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87.5px;
+    width: 87.5px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 40px;
+    color: white;
+    
 }
