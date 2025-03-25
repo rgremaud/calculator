@@ -1,8 +1,7 @@
-// Math functions
 let sum = 0;
 
 function add(a,b) {
-    sum = a+b;
+sum = a+b;
 }
 
 function subtract(a,b) {
@@ -41,13 +40,26 @@ function operate(a,b,mathFunction) {
     }
  }
 
-// Calculator container creation
-// build large rectangle container for top of calculator that displays input - 3X taller than buttons
-// Five rows and four columns
-// 5 - Clear, Percentage (maybe), Delete (maybe), Division
-// 4 - 7, 8, 9, multiplication
-// 3 - 4, 5, 6, subtraction
-// 2 - 1, 2, 3, addition
-// 1 - +/-, 0, . (decimal), equals
+// Goal is to add click modifiers to all of the buttons
+// <div class="buttons modifiers" id="clear">C</div>
 
+const clear = document.querySelector("#clear")
+clear.addEventListener("click", () => {
+    alert("ouch!");
+});
 
+// add click event listener for each number that returns the actual number in console
+//const seven = document.querySelector("#seven")
+//seven.addEventListener("click", function(event) {
+   // const value = event.target.dataset.value;
+    //console.log("You clicked the number " + value);
+//});
+
+const numbers = document.querySelectorAll(".numbers");
+
+numbers.forEach((button) => {
+    button.addEventListener("click",function(event) {
+        const value = event.target.dataset.value;
+        console.log("You clicked the number " + value);
+    });
+});
