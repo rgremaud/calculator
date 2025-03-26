@@ -47,21 +47,7 @@ function operate(a,b,mathFunction) {
     }
  }
 
-
-const clear = document.querySelector("#clear")
-clear.addEventListener("click", () => {
-    alert("ouch!");
-});
-
- // convert current number array and store as number
-  
-function arrayToNumber(array) {
-    let string = arrayA.join('');
-    let number = Number(string);
-    return number
-}
-
-
+// button click event for numbers
 const numbers = document.querySelectorAll(".numbers");
 
 numbers.forEach((button) => {
@@ -73,6 +59,29 @@ numbers.forEach((button) => {
     });
 });
 
+const clear = document.querySelector("#clear")
+clear.addEventListener("click", () => {
+    alert("ouch!");
+});
+
+const deleteNumber = document.querySelector('#deleteNumber')
+deleteNumber.addEventListener("click", () => {
+    arrayA.pop();
+
+    console.log("Array is " + arrayA);
+});
+
+ // convert current number array and store as number
+  
+function arrayToNumber(array) {
+    let string = arrayA.join('');
+    let number = Number(string);
+    return number
+}
+
+
+
+
 // Enter first number 
 // 1) steps to store your number
     // arrayA = []
@@ -82,3 +91,12 @@ numbers.forEach((button) => {
     // stringNumA = arrayA.join(''); to convert to string
     // let numA = Number(stringNumA); to convert to a number
 
+// Calculator will always have store two variables
+// first number (or running total of sum)
+// second number being added/divided/subtracted/multiplied against first number
+
+
+//Unique buttons
+//percentage number / 100 = percentage
+// +/- = multiply by -1 to toggle
+// del -> remove the final string
