@@ -1,44 +1,45 @@
 // initial values
 
 let sum = 0;
-let a = 0;
+let firstNumber = 0;
+let secondNumber = 0;
 let arrayA = [];
 let arrayB = [];
 
 // functions
 
-function add(a,b) {
-sum = a+b;
+function add(firstNumber,secondNumber) {
+sum = firstNumber+secondNumber;
 }
 
-function subtract(a,b) {
-    sum = a-b;
+function subtract(firstNumber,secondNumber) {
+    sum = firstNumber-secondNumber;
 }
 
-function multiply(a,b) {
-    sum = a*b;
+function multiply(firstNumber,secondNumber) {
+    sum = firstNumber*secondNumber;
 }
 
-function divide(a,b) {
-    sum = a / b;
+function divide(firstNumber,secondNumber) {
+    sum = firstNumber / secondNumber;
 }
 
 function clearTotal() {
     sum === 0;
 }
 
-function operate(a,b,mathFunction) {
+function operate(firstNumber,secondNumber,mathFunction) {
     if (mathFunction === "add") {
-        add(a,b);
+        add(firstNumber,secondNumber);
         console.log("Addition is " + sum);
     } else if (mathFunction === "subtract") {
-        subtract(a,b);
+        subtract(firstNumber,secondNumber);
         console.log("Subtraction is "+ sum);
     } else if (mathFunction === "multiply") {
-        multiply(a,b);
+        multiply(firstNumber,secondNumber);
         console.log("Mutliplication is " + sum);
     } else if (mathFunction === "divide") {
-        divide(a,b);
+        divide(firstNumber,secondNumber);
         console.log("Division is " + sum);
     } else if (mathFunction === "clearTotal") {
         clearTotal()
