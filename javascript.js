@@ -1,7 +1,11 @@
+// initial values
+
 let sum = 0;
 let a = 0;
 let arrayA = [];
 let arrayB = [];
+
+// functions
 
 function add(a,b) {
 sum = a+b;
@@ -43,15 +47,19 @@ function operate(a,b,mathFunction) {
     }
  }
 
-// Goal is to add click modifiers to all of the buttons
-// <div class="buttons modifiers" id="clear">C</div>
 
 const clear = document.querySelector("#clear")
 clear.addEventListener("click", () => {
     alert("ouch!");
 });
 
-
+ // convert current number array and store as number
+  
+function arrayToNumber(array) {
+    let string = arrayA.join('');
+    let number = Number(string);
+    return number
+}
 
 
 const numbers = document.querySelectorAll(".numbers");
