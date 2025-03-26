@@ -60,14 +60,17 @@ numbers.forEach((button) => {
     button.addEventListener("click",function(event) {
         const value = event.target.dataset.value;
         arrayA.push(value);
-        
+
         console.log("Array is " + arrayA);
     });
 });
 
-//need to update so clicking a button updates a to concat the numbers
-// do this as an array?  
-// arrayA = []
-// arrayA.push(value) adds the value to the end of the array
-// a = arrayA.join(''); to convert to string
-// let num = Number(str); to convert to a number
+// Enter first number 
+// 1) steps to store your number
+    // arrayA = []
+    // arrayA.push(value) adds the value to the end of the array
+// 2) select your operator (+, -, /, *)
+    // convert current number array and store as first number
+    // stringNumA = arrayA.join(''); to convert to string
+    // let numA = Number(stringNumA); to convert to a number
+
