@@ -7,6 +7,7 @@ let displayElement = 0;
 let buttonValue = 0;
 let storedValue = 0;
 
+
 // functions
  
 function add(firstNumber,secondNumber) {
@@ -29,7 +30,7 @@ function clearTotal() {
     sum === 0;
 }
 
-function operate(firstNumber,secondNumber,mathFunction) {
+function operate(storedValue,secondNumber,mathFunction) {
     if (mathFunction === "add") {
         add(firstNumber,secondNumber);
         console.log("Addition is " + sum);
@@ -59,7 +60,6 @@ function concatNumbers() {
       displayElement.textContent = displayNumber + buttonValue;
       storedValue = Number(displayNumber + buttonValue);
     } else {
-        
 }}
   
 const numberButtons = document.querySelectorAll(".numbers");
@@ -74,22 +74,40 @@ clear.addEventListener("click", () => {
     displayElement.textContent = 0;
 });
 
+// add click event for each class operator (+, -, *, /)
+
+const operators = document.querySelectorAll(".operators");
+
+operators.forEach((operators) => { 
+    operators.addEventListener("click", () => {
+        alert(operators.id);
+    });
+});
+
+// click should take current display amount (displayNumber.textContent), convert to number and store the value
+// storedValue = Number(displayNumber.textContent)
+// click should assign mathFunction to respective operator, add subtract multiple divide
+// Clear the display so first number selected after operator is chosen becomes the new displayNumber
+// Hitting equals sign will store the second number in secondNumber and call operator
+// ex operate(storedValue,secondNumber,mathFunction)
+
+
+// Delete option - doesn't work
+
 function deleteNumber(string) {
     let newString = 0;
     if (string.length === 1) {
         newString = "0"
-        return newString;
+        string = newString;
+        return string;
    } else if (string.length > 1) {
         newString = string.slice(0,-1);
-        return newString;
+        string = newString;
+        return string;
     } else {
     }
 }
 
-const delNumber = document.querySelector('#delNumber')
+//const delNumber = document.querySelector('#delNumber')
 
-delNumber.addEventListener("click", () => {
-    let currentDisplay = displayElement.textContent;;
-    deleteNumber(currentDisplay);
-    alert("OUCH!");
-});
+//delNumber.addEventListener("click", deleteNumber(displayElement.textContent));
