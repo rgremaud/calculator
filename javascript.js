@@ -8,9 +8,9 @@ let buttonValue = 0;
 let storedValue = 0;
 
 // functions
-
+ 
 function add(firstNumber,secondNumber) {
-sum = firstNumber+secondNumber;
+    sum = firstNumber+secondNumber;
 }
 
 function subtract(firstNumber,secondNumber) {
@@ -53,31 +53,43 @@ function concatNumbers() {
     displayElement = document.getElementById("displayScreen");
     displayNumber = displayElement.textContent;
     buttonValue = this.textContent;
-  //build a max length of 9 for displayNumber + buttonValue
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
     } else if (displayNumber.length < 9) { 
       displayElement.textContent = displayNumber + buttonValue;
       storedValue = Number(displayNumber + buttonValue);
-    } else if (displayNumber.length >= 9) {
-        
     } else {
         
-    }    
-    }
+}}
   
-    const numberButtons = document.querySelectorAll(".numbers");
-  numberButtons.forEach(button => {
+const numberButtons = document.querySelectorAll(".numbers");
+
+numberButtons.forEach(button => {
     button.addEventListener("click", concatNumbers);
-  });
+});
 
 const clear = document.querySelector("#clear")
+
 clear.addEventListener("click", () => {
     displayElement.textContent = 0;
 });
 
-const deleteNumber = document.querySelector('#deleteNumber')
-deleteNumber.addEventListener("click", () => {
-    displayElement.textContent = displayNumber - buttonValue;
-    //displayElement.slice(0,-1);
+function deleteNumber(string) {
+    let newString = 0;
+    if (string.length === 1) {
+        newString = "0"
+        return newString;
+   } else if (string.length > 1) {
+        newString = string.slice(0,-1);
+        return newString;
+    } else {
+    }
+}
+
+const delNumber = document.querySelector('#delNumber')
+
+delNumber.addEventListener("click", () => {
+    let currentDisplay = displayElement.textContent;;
+    deleteNumber(currentDisplay);
+    alert("OUCH!");
 });
