@@ -53,16 +53,20 @@ function concatNumbers() {
     displayElement = document.getElementById("displayScreen");
     displayNumber = displayElement.textContent;
     buttonValue = this.textContent;
-  
+  //build a max length of 9 for displayNumber + buttonValue
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
-    } else {
+    } else if (displayNumber.length < 9) { 
       displayElement.textContent = displayNumber + buttonValue;
       storedValue = Number(displayNumber + buttonValue);
+    } else if (displayNumber.length >= 9) {
+        
+    } else {
+        
+    }    
     }
-  }
   
-  const numberButtons = document.querySelectorAll(".numbers");
+    const numberButtons = document.querySelectorAll(".numbers");
   numberButtons.forEach(button => {
     button.addEventListener("click", concatNumbers);
   });
