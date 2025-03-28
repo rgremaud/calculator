@@ -57,6 +57,7 @@ function concatNumbers() {
     buttonValue = this.textContent;
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
+      storedValue = Number(displayNumber + buttonValue);
     } else if (displayNumber.length < 9) { 
       displayElement.textContent = displayNumber + buttonValue;
       storedValue = Number(displayNumber + buttonValue);
@@ -82,7 +83,7 @@ const operators = document.querySelectorAll(".operators");
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
         firstNumber = storedValue;
-        storedValue = 0;
+        //storedValue = 0;
         mathFunction = operators.id;
         displayElement.textContent = '';
     });
@@ -97,7 +98,7 @@ equals.addEventListener("click", () => {
 // call the operator function for firstNumber, secondNumber, mathFunction and set to answer
         answer = operate(firstNumber, secondNumber, mathFunction);
 // set the displayElement.textContent = answer
-        displayElement.textContent = answer;
+        displayElement.textContent = sum;
 });
 
 // click should take current display amount (displayNumber.textContent), convert to number and store the value
