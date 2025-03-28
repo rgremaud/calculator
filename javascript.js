@@ -6,7 +6,8 @@ let displayNumber = 0;
 let displayElement = 0;
 let buttonValue = 0;
 let storedValue = 0;
-
+let mathFunction = "";
+let answer = 0;
 
 // functions
  
@@ -30,7 +31,7 @@ function clearTotal() {
     sum === 0;
 }
 
-function operate(storedValue,secondNumber,mathFunction) {
+function operate(firstNumber,secondNumber,mathFunction) {
     if (mathFunction === "add") {
         add(firstNumber,secondNumber);
         console.log("Addition is " + sum);
@@ -80,8 +81,25 @@ const operators = document.querySelectorAll(".operators");
 
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
-        alert(operators.id);
+        firstNumber = storedValue;
+        storedValue = 0;
+        mathFunction = operators.id;
+        displayElement.textContent = '';
+        console.log(mathFunction);
     });
+});
+
+const equals = document.querySelector("#equals");
+
+equals.addEventListener("click", () => {
+// store the storedValue in secondNumber
+        secondNumber = storedValue;
+        //storedValue = 0;
+// call the operator function for firstNumber, secondNumber, mathFunction and set to answer
+        answer = operate(firstNumber, secondNumber, mathFunction);
+// set the displayElement.textContent = answer
+        displayElement.textContent = answer;
+    alert("Ouch!")
 });
 
 // click should take current display amount (displayNumber.textContent), convert to number and store the value

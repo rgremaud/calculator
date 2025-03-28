@@ -63,3 +63,7 @@ body {
 .modifiers {
     background-color: darkgray;
 }
+
+#equals {
+    background-color: orange;
+}
