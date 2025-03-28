@@ -34,16 +34,16 @@ function clearTotal() {
 function operate(firstNumber,secondNumber,mathFunction) {
     if (mathFunction === "add") {
         add(firstNumber,secondNumber);
-        console.log("Addition is " + sum);
+        console.log("Adding " + firstNumber + " + "  + secondNumber +" = " +sum);
     } else if (mathFunction === "subtract") {
         subtract(firstNumber,secondNumber);
-        console.log("Subtraction is "+ sum);
+        console.log("Subtracing " + firstNumber + " - "  + secondNumber +" = " +sum);
     } else if (mathFunction === "multiply") {
         multiply(firstNumber,secondNumber);
-        console.log("Mutliplication is " + sum);
+        console.log("Multiplying " + firstNumber + " * "  + secondNumber +" = " +sum);
     } else if (mathFunction === "divide") {
         divide(firstNumber,secondNumber);
-        console.log("Division is " + sum);
+        console.log("Dividing " + firstNumber + " / "  + secondNumber +" = " +sum);
     } else if (mathFunction === "clearTotal") {
         clearTotal()
     } else {
@@ -85,7 +85,6 @@ operators.forEach((operators) => {
         storedValue = 0;
         mathFunction = operators.id;
         displayElement.textContent = '';
-        console.log(mathFunction);
     });
 });
 
@@ -99,7 +98,6 @@ equals.addEventListener("click", () => {
         answer = operate(firstNumber, secondNumber, mathFunction);
 // set the displayElement.textContent = answer
         displayElement.textContent = answer;
-    alert("Ouch!")
 });
 
 // click should take current display amount (displayNumber.textContent), convert to number and store the value
