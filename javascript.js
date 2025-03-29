@@ -142,6 +142,6 @@ function deleteNumber() {
    displayElement.textContent = newDisplay;
 }
 
-//const delNumber = document.querySelector('#delNumber')
+const delNumber = document.querySelector('#delNumber')
 
-//delNumber.addEventListener("click", deleteNumber(displayElement.textContent));
+delNumber.addEventListener("click", deleteNumber);
