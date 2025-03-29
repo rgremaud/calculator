@@ -20,7 +20,6 @@ let clearDisplay = -1;
     // check if firstNumber and secondNumber are valid -> if so calculate
     // store this value as firstNumber and repeat
 
-// functions
  
 function add(firstNumber,secondNumber) {
     sum = firstNumber+secondNumber;
@@ -69,12 +68,16 @@ function concatNumbers() {
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
       currentValue = Number(displayNumber + buttonValue);
-    } else if (displayNumber.length < 9) { 
-      displayElement.textContent = displayNumber + buttonValue;
-      currentValue = Number(displayNumber + buttonValue);
-    } else if (clearDisplay === 1) {
-        alert("flag is toggled!");
+    } else if (clearDisplay === 1 && displayNumber.length < 9) {
+        displayNumber = ""
+        currentValue = 0;
         clearDisplay = -1;
+        console.log("Clear display set to " + clearDisplay);
+        displayElement.textContent = displayNumber + buttonValue;
+        currentValue = Number(displayNumber + buttonValue);
+    } else if (displayNumber.length < 9) { 
+    displayElement.textContent = displayNumber + buttonValue;
+    currentValue = Number(displayNumber + buttonValue);
     } else {
     }
 }
@@ -82,7 +85,7 @@ function concatNumbers() {
 const numberButtons = document.querySelectorAll(".numbers");
 
 numberButtons.forEach(button => {
-    button.addEventListener("click", concatNumbers, clearDisplayFunction(clearDisplay));
+    button.addEventListener("click", concatNumbers);
 });
 
 function clearDisplayFunction() {
@@ -106,15 +109,12 @@ clear.addEventListener("click", () => {
 // add click event for each class operator (+, -, *, /)
 
 const operators = document.querySelectorAll(".operators");
-//set a flag when clearDisplay = true; when operator is selected
-//number click will check if true then next button click will clear the display and set clearDisplay = false;
+
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
         clearDisplay = 1;
         console.log("Clear Display set to " + clearDisplay)
         firstNumber = currentValue;
-        displayElement.textContent = "";
-        currentValue = 0;
         mathFunction = operators.id; 
     });
 });
