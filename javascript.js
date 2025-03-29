@@ -89,10 +89,12 @@ const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
     displayElement.textContent = 0;
-    firstNumber = 0;
+    console.log("Clear firstNumber is " + firstNumber);
+    console.log("Cleary secondNumber is " + secondNumber);
+    firstNumber = "void";
     secondNumber = 0;
-    sum = 0;
-    answer = 0;
+    //sum = 0;
+    //answer = 0;
 });
 
 const operators = document.querySelectorAll(".operators");
@@ -101,10 +103,6 @@ operators.forEach((operators) => {
     operators.addEventListener("click", () => {
         mathFunction = operators.id;
         storageCheck();
-        //clearDisplay = 1;
-        //console.log("Clear Display set to " + clearDisplay)
-        //firstNumber = currentValue;
-        //mathFunction = operators.id; 
     });
 });
 
@@ -125,7 +123,7 @@ equals.addEventListener("click", () => {
 
 
 function deleteNumber() {
-   delNumberString = currentValue.toString();
+   delNumberString = displayElement.textContent;
    newNumber = delNumberString.slice(0,-1);
    newDisplay = Number(newNumber);
    currentValue = newDisplay;
@@ -172,3 +170,6 @@ function storageCheck() {
 // There are some issues with functions adjusting non-display numbers when selecting specific functions
 // Need to consider cleaning up the number storage system to help streamline all of the different equations 
 // and functions.
+
+// Known issues:
+// Applying +/- on secondNumber clears the firstNumber to 0
