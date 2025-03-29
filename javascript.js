@@ -83,7 +83,7 @@ const operators = document.querySelectorAll(".operators");
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
         firstNumber = storedValue;
-        //storedValue = 0;
+        storedValue = 0;
         mathFunction = operators.id;
         displayElement.textContent = '';
     });
@@ -100,13 +100,6 @@ equals.addEventListener("click", () => {
 // set the displayElement.textContent = answer
         displayElement.textContent = sum;
 });
-
-// click should take current display amount (displayNumber.textContent), convert to number and store the value
-// storedValue = Number(displayNumber.textContent)
-// click should assign mathFunction to respective operator, add subtract multiple divide
-// Clear the display so first number selected after operator is chosen becomes the new displayNumber
-// Hitting equals sign will store the second number in secondNumber and call operator
-// ex operate(storedValue,secondNumber,mathFunction)
 
 
 // Delete option - doesn't work
