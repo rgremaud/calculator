@@ -1,6 +1,4 @@
-// initial values
-
-let firstNumber = 0;
+let firstNumber = "void";
 let secondNumber = 0;
 let displayNumber = 0;
 //let displayElement = 0;
@@ -9,18 +7,8 @@ let currentValue = 0;
 let mathFunction = "";
 let answer = 0;
 let clearDisplay = -1;
+let sum = 0
 
-// different numbers 
-// currentValue which is displayValue + buttonValue
-// firstNumber and secondNumber - for operate function
-// Plug in firstNumber
-// select operator
-// plug in secondNumber
-// hit equals OR select another math operator
-    // check if firstNumber and secondNumber are valid -> if so calculate
-    // store this value as firstNumber and repeat
-
- 
 function add(firstNumber,secondNumber) {
     sum = firstNumber+secondNumber;
 }
@@ -106,16 +94,16 @@ clear.addEventListener("click", () => {
     answer = 0;
 });
 
-// add click event for each class operator (+, -, *, /)
-
 const operators = document.querySelectorAll(".operators");
 
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
-        clearDisplay = 1;
-        console.log("Clear Display set to " + clearDisplay)
-        firstNumber = currentValue;
-        mathFunction = operators.id; 
+        mathFunction = operators.id;
+        storageCheck();
+        //clearDisplay = 1;
+        //console.log("Clear Display set to " + clearDisplay)
+        //firstNumber = currentValue;
+        //mathFunction = operators.id; 
     });
 });
 
@@ -123,11 +111,15 @@ const equals = document.querySelector("#equals");
 
 equals.addEventListener("click", () => {
         secondNumber = currentValue;
-        //currentValue = 0;
+        console.log("secondNumber is " + secondNumber);
+        console.log("firstNumber is " + firstNumber);
+        console.log("mathFunction is " + mathFunction);
         operate(firstNumber, secondNumber, mathFunction);
-        answer = sum
+        answer = sum;
+        console.log("answer is " + answer);
         displayElement.textContent = answer;
         firstNumber = answer;
+        secondNumber = "recycle";
 });
 
 
@@ -161,3 +153,15 @@ function positiveNegative() {
 const posNeg = document.querySelector('#posNeg');
 
 posNeg.addEventListener("click",positiveNegative);
+
+
+function storageCheck() {
+    if (firstNumber === "void") {
+        clearDisplay = 1;
+        console.log("Clear Display set to " + clearDisplay)
+        firstNumber = currentValue;
+    } else {
+        clearDisplay = 1;
+        secondNumber = currentValue;
+    }
+}
