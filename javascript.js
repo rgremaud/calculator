@@ -3,11 +3,22 @@
 let firstNumber = 0;
 let secondNumber = 0;
 let displayNumber = 0;
-let displayElement = 0;
+//let displayElement = 0;
 let buttonValue = 0;
-let storedValue = 0;
+let currentValue = 0;
 let mathFunction = "";
 let answer = 0;
+let clearDisplay = -1;
+
+// different numbers 
+// currentValue which is displayValue + buttonValue
+// firstNumber and secondNumber - for operate function
+// Plug in firstNumber
+// select operator
+// plug in secondNumber
+// hit equals OR select another math operator
+    // check if firstNumber and secondNumber are valid -> if so calculate
+    // store this value as firstNumber and repeat
 
 // functions
  
@@ -57,65 +68,78 @@ function concatNumbers() {
     buttonValue = this.textContent;
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
-      storedValue = Number(displayNumber + buttonValue);
+      currentValue = Number(displayNumber + buttonValue);
     } else if (displayNumber.length < 9) { 
       displayElement.textContent = displayNumber + buttonValue;
-      storedValue = Number(displayNumber + buttonValue);
+      currentValue = Number(displayNumber + buttonValue);
+    } else if (clearDisplay === 1) {
+        alert("flag is toggled!");
+        clearDisplay = -1;
     } else {
-}}
+    }
+}
   
 const numberButtons = document.querySelectorAll(".numbers");
 
 numberButtons.forEach(button => {
-    button.addEventListener("click", concatNumbers);
+    button.addEventListener("click", concatNumbers, clearDisplayFunction(clearDisplay));
 });
+
+function clearDisplayFunction() {
+    if (clearDisplay === 1) {
+        clearDisplay = -1;
+        console.log("Clear display toggled to " + clearDisplay)
+    } else { ""
+   }
+}
 
 const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
     displayElement.textContent = 0;
+    firstNumber = 0;
+    secondNumber = 0;
+    sum = 0;
+    answer = 0;
 });
 
 // add click event for each class operator (+, -, *, /)
 
 const operators = document.querySelectorAll(".operators");
-
+//set a flag when clearDisplay = true; when operator is selected
+//number click will check if true then next button click will clear the display and set clearDisplay = false;
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
-        firstNumber = storedValue;
-        storedValue = 0;
-        mathFunction = operators.id;
-        displayElement.textContent = '';
+        clearDisplay = 1;
+        console.log("Clear Display set to " + clearDisplay)
+        firstNumber = currentValue;
+        displayElement.textContent = "";
+        currentValue = 0;
+        mathFunction = operators.id; 
     });
 });
 
 const equals = document.querySelector("#equals");
 
 equals.addEventListener("click", () => {
-// store the storedValue in secondNumber
-        secondNumber = storedValue;
-        //storedValue = 0;
-// call the operator function for firstNumber, secondNumber, mathFunction and set to answer
-        answer = operate(firstNumber, secondNumber, mathFunction);
-// set the displayElement.textContent = answer
-        displayElement.textContent = sum;
+        secondNumber = currentValue;
+        //currentValue = 0;
+        operate(firstNumber, secondNumber, mathFunction);
+        answer = sum
+        displayElement.textContent = answer;
+        firstNumber = answer;
 });
 
 
 // Delete option - doesn't work
 
-function deleteNumber(string) {
-    let newString = 0;
-    if (string.length === 1) {
-        newString = "0"
-        string = newString;
-        return string;
-   } else if (string.length > 1) {
-        newString = string.slice(0,-1);
-        string = newString;
-        return string;
-    } else {
-    }
+function deleteNumber() {
+   //take currentValue and set it to a string with 
+   delNumberString = currentValue.toString();
+   newNumber = delNumberString.slice(0,-1);
+   newDisplay = Number(newNumber);
+   currentValue = newDisplay;
+   displayElement.textContent = newDisplay;
 }
 
 //const delNumber = document.querySelector('#delNumber')
