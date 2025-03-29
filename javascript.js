@@ -8,6 +8,7 @@ let mathFunction = "";
 let answer = 0;
 let clearDisplay = -1;
 let sum = 0
+let displayValue = 0;
 
 function add(firstNumber,secondNumber) {
     sum = firstNumber+secondNumber;
@@ -145,6 +146,7 @@ const percentage = document.querySelector('#percentage');
 percentage.addEventListener("click", percentCalc);
 
 function positiveNegative() { 
+    //currentValue = Number(displayValue.textContent);
     newNumber = currentValue*-1;
     displayElement.textContent = newNumber;
     currentValue = newNumber;
@@ -165,3 +167,8 @@ function storageCheck() {
         secondNumber = currentValue;
     }
 }
+
+// calculator currently works when entering multi-operation calculations while hitting equals sign
+// There are some issues with functions adjusting non-display numbers when selecting specific functions
+// Need to consider cleaning up the number storage system to help streamline all of the different equations 
+// and functions.
