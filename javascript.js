@@ -131,10 +131,7 @@ equals.addEventListener("click", () => {
 });
 
 
-// Delete option - doesn't work
-
 function deleteNumber() {
-   //take currentValue and set it to a string with 
    delNumberString = currentValue.toString();
    newNumber = delNumberString.slice(0,-1);
    newDisplay = Number(newNumber);
@@ -142,6 +139,25 @@ function deleteNumber() {
    displayElement.textContent = newDisplay;
 }
 
-const delNumber = document.querySelector('#delNumber')
+const delNumber = document.querySelector('#delNumber');
 
 delNumber.addEventListener("click", deleteNumber);
+
+function percentCalc() {
+    newNumber = currentValue/100;
+    displayElement.textContent = newNumber;
+}
+
+const percentage = document.querySelector('#percentage');
+
+percentage.addEventListener("click", percentCalc);
+
+function positiveNegative() { 
+    newNumber = currentValue*-1;
+    displayElement.textContent = newNumber;
+    currentValue = newNumber;
+}
+
+const posNeg = document.querySelector('#posNeg');
+
+posNeg.addEventListener("click",positiveNegative);
