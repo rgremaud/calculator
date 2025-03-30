@@ -1,5 +1,5 @@
-let firstNumber = "void";
-let secondNumber = 0;
+let firstNumber = "noNumber";
+let secondNumber = "noNumber";
 let displayNumber = 0;
 //let displayElement = 0;
 let buttonValue = 0;
@@ -89,12 +89,79 @@ const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
     displayElement.textContent = 0;
-    console.log("Clear firstNumber is " + firstNumber);
-    console.log("Cleary secondNumber is " + secondNumber);
-    firstNumber = "void";
-    secondNumber = 0;
+    firstNumber = "noNumber";
+    secondNumber = "noNumber";
     //sum = 0;
     //answer = 0;
+});
+
+
+
+const equals = document.querySelector("#equals");
+
+equals.addEventListener("click", () => {
+        secondNumber = currentValue;
+        console.log("secondNumber is " + secondNumber);
+        console.log("firstNumber is " + firstNumber);
+        console.log("mathFunction is " + mathFunction);
+        operate(firstNumber, secondNumber, mathFunction);
+        answer = Number(sum.toFixed(7));
+        console.log("answer is " + answer);
+        displayElement.textContent = answer;
+        firstNumber = answer;
+        secondNumber = "noNumber";
+});
+
+
+function deleteNumber() {
+   delNumberString = displayElement.textContent;
+   newNumber = delNumberString.slice(0,-1);
+   newDisplay = Number(newNumber);
+   currentValue = newDisplay;
+   displayElement.textContent = newDisplay;
+   if(secondNumber === "noNumber") {
+    firstNumber = newDisplay;
+   }
+}
+
+const delNumber = document.querySelector('#delNumber');
+
+delNumber.addEventListener("click", deleteNumber);
+
+function percentCalc() {
+    currentValue = Number(displayElement.textContent);
+    newNumber = currentValue/100;
+    displayElement.textContent = newNumber;
+    currentValue = newNumber;
+    if(secondNumber === "noNumber") {
+        firstNumber = currentValue;
+    }
+}
+
+const percentage = document.querySelector('#percentage');
+
+percentage.addEventListener("click", percentCalc);
+
+function positiveNegative() { 
+    currentValue = Number(displayElement.textContent);
+    newNumber = currentValue*-1;
+    displayElement.textContent = newNumber;
+    currentValue = newNumber;
+}
+
+const posNeg = document.querySelector('#posNeg');
+
+posNeg.addEventListener("click",positiveNegative);
+
+const buttons = document.querySelectorAll(".buttons")
+
+buttons.forEach((buttons) => { 
+    buttons.addEventListener("mouseenter", () => {
+        buttons.style.opacity = .7;
+    })
+    buttons.addEventListener("mouseleave", () => {
+        buttons.style.opacity = 1;
+    })
 });
 
 const operators = document.querySelectorAll(".operators");
@@ -106,70 +173,36 @@ operators.forEach((operators) => {
     });
 });
 
-const equals = document.querySelector("#equals");
-
-equals.addEventListener("click", () => {
-        secondNumber = currentValue;
-        console.log("secondNumber is " + secondNumber);
-        console.log("firstNumber is " + firstNumber);
-        console.log("mathFunction is " + mathFunction);
-        operate(firstNumber, secondNumber, mathFunction);
+function storageCheck() {
+    if (firstNumber === "noNumber") {
+        clearDisplay = 1;
+        firstNumber = currentValue;
+    } else if (firstNumber === "number"  && secondNumber === "number") {
+        operate(firstNumber,secondNumber,mathFunction)
         answer = sum;
-        console.log("answer is " + answer);
+        console.log("noNumber check answer is" + answer);
         displayElement.textContent = answer;
         firstNumber = answer;
-        secondNumber = "recycle";
-});
-
-
-function deleteNumber() {
-   delNumberString = displayElement.textContent;
-   newNumber = delNumberString.slice(0,-1);
-   newDisplay = Number(newNumber);
-   currentValue = newDisplay;
-   displayElement.textContent = newDisplay;
-}
-
-const delNumber = document.querySelector('#delNumber');
-
-delNumber.addEventListener("click", deleteNumber);
-
-function percentCalc() {
-    newNumber = currentValue/100;
-    displayElement.textContent = newNumber;
-}
-
-const percentage = document.querySelector('#percentage');
-
-percentage.addEventListener("click", percentCalc);
-
-function positiveNegative() { 
-    //currentValue = Number(displayValue.textContent);
-    newNumber = currentValue*-1;
-    displayElement.textContent = newNumber;
-    currentValue = newNumber;
-}
-
-const posNeg = document.querySelector('#posNeg');
-
-posNeg.addEventListener("click",positiveNegative);
-
-
-function storageCheck() {
-    if (firstNumber === "void") {
-        clearDisplay = 1;
-        console.log("Clear Display set to " + clearDisplay)
-        firstNumber = currentValue;
+        secondNumber = "noNumber";
     } else {
+        console.log("This is firing");
         clearDisplay = 1;
         secondNumber = currentValue;
     }
 }
 
-// calculator currently works when entering multi-operation calculations while hitting equals sign
-// There are some issues with functions adjusting non-display numbers when selecting specific functions
-// Need to consider cleaning up the number storage system to help streamline all of the different equations 
-// and functions.
-
 // Known issues:
-// Applying +/- on secondNumber clears the firstNumber to 0
+// chaining multiple operatores is not trigerring the correct section
+// Swapping to percentage is not updating correctly.
+
+// Big final step:
+// Add logic for multiple calculations w/out selecting equals
+// Enter firstNumber = 10
+// Select addition
+// Enter secondNumber = 5
+// select subtraction -> Check if firstNumber and secondNumber are numbers - set a void flag for both
+// if both are non-void then call operate(firstNumber, secondNumber, mathFunction)
+// set firstNumber = sum
+// set secondNumber = void
+// populate input to secondNumber
+
