@@ -33,20 +33,15 @@ function clearTotal() {
 function operate(firstNumber,secondNumber,mathFunction) {
     if (mathFunction === "add") {
         add(firstNumber,secondNumber);
-        console.log("Adding " + firstNumber + " + "  + secondNumber +" = " +sum);
     } else if (mathFunction === "subtract") {
         subtract(firstNumber,secondNumber);
-        console.log("Subtracing " + firstNumber + " - "  + secondNumber +" = " +sum);
     } else if (mathFunction === "multiply") {
         multiply(firstNumber,secondNumber);
-        console.log("Multiplying " + firstNumber + " * "  + secondNumber +" = " +sum);
     } else if (mathFunction === "divide") {
         divide(firstNumber,secondNumber);
-        console.log("Dividing " + firstNumber + " / "  + secondNumber +" = " +sum);
     } else if (mathFunction === "clearTotal") {
         clearTotal()
     } else {
-        console.log("Invalid Input - Try again dummy.");
     }
  }
 
@@ -61,7 +56,6 @@ function concatNumbers() {
         displayNumber = ""
         currentValue = 0;
         clearDisplay = -1;
-        console.log("Clear display set to " + clearDisplay);
         displayElement.textContent = displayNumber + buttonValue;
         currentValue = Number(displayNumber + buttonValue);
     } else if (displayNumber.length < 9) { 
@@ -80,7 +74,6 @@ numberButtons.forEach(button => {
 function clearDisplayFunction() {
     if (clearDisplay === 1) {
         clearDisplay = -1;
-        console.log("Clear display toggled to " + clearDisplay)
     } else { ""
    }
 }
@@ -100,16 +93,19 @@ clear.addEventListener("click", () => {
 const equals = document.querySelector("#equals");
 
 equals.addEventListener("click", () => {
+        if( firstNumber === "noNumber" && secondNumber === "noNumber") {
+            console.log("No numbers set");
+            firstNumber = currentValue;
+            displayElement.textContent = firstNumber;
+        } else {
         secondNumber = currentValue;
-        console.log("secondNumber is " + secondNumber);
-        console.log("firstNumber is " + firstNumber);
-        console.log("mathFunction is " + mathFunction);
         operate(firstNumber, secondNumber, mathFunction);
         answer = Number(sum.toFixed(7));
-        console.log("answer is " + answer);
+        console.log("Answer after equals is " + answer);
         displayElement.textContent = answer;
         firstNumber = answer;
         secondNumber = "noNumber";
+        mathFunction = "";}
 });
 
 
@@ -121,6 +117,8 @@ function deleteNumber() {
    displayElement.textContent = newDisplay;
    if(secondNumber === "noNumber") {
     firstNumber = newDisplay;
+    answer = firstNumber;
+    sum = firstNumber;
    }
 }
 
@@ -135,6 +133,8 @@ function percentCalc() {
     currentValue = newNumber;
     if(secondNumber === "noNumber") {
         firstNumber = currentValue;
+        answer = firstNumber;
+        sum = firstNumber;
     }
 }
 
@@ -147,6 +147,11 @@ function positiveNegative() {
     newNumber = currentValue*-1;
     displayElement.textContent = newNumber;
     currentValue = newNumber;
+    if(secondNumber === "noNumber") {
+        firstNumber = currentValue;
+        answer = firstNumber;
+        sum = firstNumber;
+    }
 }
 
 const posNeg = document.querySelector('#posNeg');
@@ -168,41 +173,39 @@ const operators = document.querySelectorAll(".operators");
 
 operators.forEach((operators) => { 
     operators.addEventListener("click", () => {
-        mathFunction = operators.id;
+        //if(firstNumber != "noNumber") {
+            //secondNumber = currentValue;
+        //}
         storageCheck();
+        mathFunction = operators.id;
     });
 });
 
 function storageCheck() {
-    if (firstNumber === "noNumber") {
+    if (firstNumber === "noNumber"  ) {
+        console.log("First option is firing");
         clearDisplay = 1;
         firstNumber = currentValue;
-    } else if (firstNumber === "number"  && secondNumber === "number") {
+    } else if (firstNumber !== "noNumber") {
+        // Two numbers are assigned
+        secondNumber = currentValue;
         operate(firstNumber,secondNumber,mathFunction)
         answer = sum;
-        console.log("noNumber check answer is" + answer);
+        console.log("Second option is firing and answer is " + sum);
         displayElement.textContent = answer;
         firstNumber = answer;
         secondNumber = "noNumber";
+        currentValue = firstNumber
+        mathFunction = "";
+        clearDisplay = 1;
     } else {
-        console.log("This is firing");
+        console.log("Third option is firing");
         clearDisplay = 1;
         secondNumber = currentValue;
     }
 }
 
 // Known issues:
-// chaining multiple operatores is not trigerring the correct section
-// Swapping to percentage is not updating correctly.
-
-// Big final step:
-// Add logic for multiple calculations w/out selecting equals
-// Enter firstNumber = 10
-// Select addition
-// Enter secondNumber = 5
-// select subtraction -> Check if firstNumber and secondNumber are numbers - set a void flag for both
-// if both are non-void then call operate(firstNumber, secondNumber, mathFunction)
-// set firstNumber = sum
-// set secondNumber = void
-// populate input to secondNumber
+// Multi-step calculations work but seem to break the 'special' buttons
+// Entering a number and hitting equals doesn't work
 
