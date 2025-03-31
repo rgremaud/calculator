@@ -37,6 +37,9 @@ function operate(firstNumber,secondNumber,mathFunction) {
         subtract(firstNumber,secondNumber);
     } else if (mathFunction === "multiply") {
         multiply(firstNumber,secondNumber);
+    } else if (mathFunction === "divide" && secondNumber === 0) {
+        displayElement.textContent = displayNumber;
+        alert("Imagine that you have zero cookies and you split them evenly among friends. How many cookies does each person get? See? It doesn't make sense. ");
     } else if (mathFunction === "divide") {
         divide(firstNumber,secondNumber);
     } else if (mathFunction === "clearTotal") {
@@ -93,7 +96,7 @@ clear.addEventListener("click", () => {
 const equals = document.querySelector("#equals");
 
 equals.addEventListener("click", () => {
-        if( firstNumber === "noNumber" && secondNumber === "noNumber") {
+        if( firstNumber === "noNumber" && secondNumber === "noNumber" ) {
             console.log("No numbers set");
             firstNumber = currentValue;
             displayElement.textContent = firstNumber;
