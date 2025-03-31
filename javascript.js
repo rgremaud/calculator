@@ -1,7 +1,6 @@
 let firstNumber = "noNumber";
 let secondNumber = "noNumber";
 let displayNumber = 0;
-//let displayElement = 0;
 let buttonValue = 0;
 let currentValue = 0;
 let mathFunction = "";
@@ -9,6 +8,7 @@ let answer = 0;
 let clearDisplay = -1;
 let sum = 0
 let displayValue = 0;
+let includesDecimal = "";
 
 function add(firstNumber,secondNumber) {
     sum = firstNumber+secondNumber;
@@ -52,6 +52,8 @@ function concatNumbers() {
     displayElement = document.getElementById("displayScreen");
     displayNumber = displayElement.textContent;
     buttonValue = this.textContent;
+    decimal.disabled = false;
+    decimalCheck
     if (displayNumber === "0") {
       displayElement.textContent = buttonValue;
       currentValue = Number(displayNumber + buttonValue);
@@ -87,8 +89,6 @@ clear.addEventListener("click", () => {
     displayElement.textContent = 0;
     firstNumber = "noNumber";
     secondNumber = "noNumber";
-    //sum = 0;
-    //answer = 0;
 });
 
 
@@ -111,6 +111,25 @@ equals.addEventListener("click", () => {
         mathFunction = "";}
 });
 
+const decimal = document.querySelector("#decimal");
+
+decimal.addEventListener("click", () => {
+    decimalCheck = displayElement.textContent.includes('.');
+    if(decimalCheck == true) {
+        decimal.disabled = true;
+    } else {
+        decimal.disabled = false;
+   }
+})
+
+function decimalCheck() { 
+    decimalCheck = displayElement.textContent.includes('.');
+    if(decimalCheck == true) {
+        decimal.disabled = true;
+    } else {
+        decimal.disabled = false;
+    }
+}
 
 function deleteNumber() {
    delNumberString = displayElement.textContent;
@@ -190,7 +209,6 @@ function storageCheck() {
         clearDisplay = 1;
         firstNumber = currentValue;
     } else if (firstNumber !== "noNumber") {
-        // Two numbers are assigned
         secondNumber = currentValue;
         operate(firstNumber,secondNumber,mathFunction)
         answer = sum;
@@ -207,8 +225,3 @@ function storageCheck() {
         secondNumber = currentValue;
     }
 }
-
-// Known issues:
-// Multi-step calculations work but seem to break the 'special' buttons
-// Entering a number and hitting equals doesn't work
-
